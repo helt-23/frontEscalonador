@@ -40,6 +40,9 @@ const ProcessRow = ({ process, onRemove }) => {
       className="process-row"
     >
       <td className="process-id">{process.id}</td>
+      <td className="text-center">
+        <Zap size={14} /> {process.priority}
+      </td>
       <td><Clock /> {process.arrivalTime}s</td>
       <td>{process.burstTime}s</td>
       <td>
@@ -252,18 +255,18 @@ const Escalonador = () => {
             </div>
           </div>
 
-          <button className="add-btn" onClick={addProcess}>
-            <Plus size={16} /> Adicionar Processo
-          </button>
-        </div>
-
-        <div className="controls">
-          <button
-            className={`control-btn ${isRunning ? 'pause' : 'start'}`}
-            onClick={() => setIsRunning(!isRunning)}
-          >
-            {isRunning ? <><Pause size={16} /> Pausar</> : <><Play size={16} /> Iniciar</>}
-          </button>
+          <div className="controls-group">
+            <button className="add-btn" onClick={addProcess}>
+              <Plus size={14} /> Adicionar
+            </button>
+            <button
+              className={`control-btn ${isRunning ? 'pause' : 'start'}`}
+              onClick={() => setIsRunning(!isRunning)}
+            >
+              {isRunning ? <Pause size={14} /> : <Play size={14} />}
+              {isRunning ? 'Pausar' : 'Iniciar'}
+            </button>
+          </div>
         </div>
       </section>
 
@@ -326,6 +329,7 @@ const Escalonador = () => {
             <thead>
               <tr>
                 <th>Processo</th>
+                <th className="text-center">Prioridade</th>
                 <th className="text-center">Chegada</th>
                 <th className="text-center">Burst</th>
                 <th>Tempo Restante</th>
