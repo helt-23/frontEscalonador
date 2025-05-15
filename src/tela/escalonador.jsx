@@ -129,6 +129,7 @@ const HistoryModal = ({ isOpen, onClose, movementLog }) => {
   );
 };
 
+
 const Escalonador = () => {
   const [form, setForm] = useState({ priority: 1, type: '', time: '' });
   const [processes, setProcesses] = useState([]);
@@ -200,6 +201,7 @@ const Escalonador = () => {
       type: form.type || 'waiting'
     }, ...prev.slice(0, 14)]);
   };
+
 
   return (
     <div className="container">
