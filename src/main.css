@@ -1,0 +1,374 @@
+/* estilo.css */
+:root {
+  --primary: #1e293b;
+  --secondary: #475569;
+  --background: #f1f5f9;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --spacing: 0.5rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", system-ui;
+  background: var(--background);
+  color: var(--primary);
+  line-height: 1.4;
+  font-size: 14px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing);
+}
+header {
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+.control-panel,
+.queues-section,
+.execution-waiting-section,
+.process-table-section {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.info-icon {
+  cursor: pointer;
+  color: var(--secondary);
+  transition: color 0.2s;
+}
+.info-icon:hover {
+  color: var(--primary);
+}
+.form-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.form-container input,
+.form-container select {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  flex: 1;
+}
+.add-btn,
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+.add-btn {
+  background: var(--success);
+  color: #fff;
+}
+.add-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.control-btn.start {
+  background: var(--success);
+  color: #fff;
+}
+.control-btn.pause {
+  background: var(--warning);
+  color: #fff;
+}
+.queues-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.queue {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.queue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.process-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.process-card {
+  background: var(--card-bg);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+.card-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.progress-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--background);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.3s;
+}
+.state-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  text-align: center;
+  background: var(--background);
+  align-items: center;
+  gap: 0.25rem;
+}
+.state-badge.running {
+  color: var(--success);
+}
+.state-badge.waiting {
+  color: var(--warning);
+}
+.state-badge.finished {
+  color: var(--secondary);
+}
+.execution-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.process-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.process-table th,
+.process-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+}
+.process-table th {
+  background: var(--background);
+  font-weight: 600;
+  text-align: left;
+}
+.remaining-time-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.remaining-time-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--background);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+.remaining-time-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--primary);
+}
+.progress-container {
+  height: 24px;
+  background: var(--background);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 500px;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #333;
+  padding: 0.25rem;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #f59e0b; /* Cor do close-btn quando hover */
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.log-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Para dividir igualmente o cabeçalho */
+  gap: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.log-header span {
+  text-align: left;
+  font-size: 1rem;
+  color: #444;
+}
+
+.log-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Para dividir igualmente as informações */
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.log-row span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.log-row:nth-child(even) {
+  background-color: #f9fafb; /* Fundo alternado para as linhas */
+}
+
+.log-row:hover {
+  background-color: #e0e7ff; /* Cor de fundo ao passar o mouse */
+}
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary);
+}
+.close-btn:hover {
+  color: var(--primary);
+}
+
+/* Botão de remover geral */
+.remove-btn,
+.remove-btn-card {
+  background: none;
+  border: none;
+  color: var(--error);
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.remove-btn:hover,
+.remove-btn-card:hover {
+  background: var(--error);
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* Estilos para o botão de histórico */
+.history-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin: 20px;
+  gap: 0.5rem;
+  background-color: #3b82f6; /* Cor de fundo */
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.history-btn:hover {
+  background-color: #2563eb; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.05); /* Efeito de aumento do botão */
+}
+
+.history-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* Efeito de foco */
+}
+
+.history-btn svg {
+  margin-right: 0.5rem; /* Ajuste para o ícone do botão */
+}

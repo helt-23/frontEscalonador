@@ -1,4 +1,4 @@
-import Escalonador from "../src/tela/escalonador";
+import Escalonador from "./tela/escalonador.jsx";
 
 function App() {
   return <Escalonador />;
